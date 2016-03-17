@@ -34,8 +34,6 @@ public class BallDemo
         // draw the ground
         myCanvas.drawLine(50, ground, 550, ground);
         
-        
-
         for (int index = 0; index<numeroDeBolas; index++) {
             // Se crean tres variables locales, una para cada color primario, 
             // eligiendo un número aleatorio desde el 0 al 254
@@ -46,7 +44,7 @@ public class BallDemo
             // ala hora de construir un objeto de la clase BouncingBall
             Color color = new Color(rojo,verde,azul);
             // crate and show the balls
-            BouncingBall ball = new BouncingBall(random.nextInt(400), random.nextInt(400),random.nextInt(250), color, ground, myCanvas);
+            BouncingBall ball = new BouncingBall(random.nextInt(250), random.nextInt(150),random.nextInt(250), color, ground, myCanvas);
             ball.draw(); 
             bolas.add(ball);
         }
