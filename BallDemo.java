@@ -44,7 +44,7 @@ public class BallDemo
             // ala hora de construir un objeto de la clase BouncingBall
             Color color = new Color(rojo,verde,azul);
             // crate and show the balls
-            BouncingBall ball = new BouncingBall(random.nextInt(250), random.nextInt(150),random.nextInt(250), color, ground, myCanvas);
+            BouncingBall ball = new BouncingBall(random.nextInt(200), random.nextInt(150),random.nextInt(100), color, ground, myCanvas);
             ball.draw(); 
             bolas.add(ball);
         }
@@ -54,6 +54,9 @@ public class BallDemo
             myCanvas.wait(50);           // small delay
             for (BouncingBall bolaEnLista : bolas) {
                 bolaEnLista.move();
+                if (bolaEnLista.getXPosition()>=550) {
+                    finished = true;
+                }
             }
         }
     }
