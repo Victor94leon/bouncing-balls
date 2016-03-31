@@ -65,11 +65,15 @@ public class BallDemo
      * Método para dibujar un triangulo
      */
     public void boxBall(int numeroDeBolas) {
+        int wallUp = 50;
+        int wallDown = 400;
+        int wallLeft = 50;
+        int wallRight = 450;
+        
         myCanvas.drawLine(50,50,450,50);
         myCanvas.drawLine(50,50,50,400);
         myCanvas.drawLine(450,50,450,400);
         myCanvas.drawLine(50,400,450,400);
-        int ground = 400;
         
         Random random = new Random();
         ArrayList<BoxBall> bolas = new ArrayList<>();
@@ -85,7 +89,7 @@ public class BallDemo
             // ala hora de construir un objeto de la clase BouncingBall
             Color color = new Color(rojo,verde,azul);
             // crate and show the balls
-            BoxBall ball = new BoxBall(random.nextInt(200), random.nextInt(150),random.nextInt(100), color, ground, myCanvas);
+            BoxBall ball = new BoxBall(random.nextInt(400), random.nextInt(150),random.nextInt(100), color,wallUp,wallDown,wallLeft,wallRight, myCanvas);
             ball.draw(); 
             bolas.add(ball);
         }

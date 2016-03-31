@@ -31,7 +31,8 @@ public class BoxBall
     private final int wallRight;
     
     private Canvas canvas;
-    private int ySpeed = 1;                // initial downward speed
+    private int ySpeed = 1;
+    private int xSpeed = 1;// initial downward speed
 
     /**
      * Constructor for objects of class BouncingBall
@@ -52,7 +53,7 @@ public class BoxBall
         diameter = ballDiameter;
         this.wallUp = wallUp; 
         this.wallDown = wallDown;
-        this.wallRight = wallLeft;
+        this.wallLeft = wallLeft;
         this.wallRight = wallRight;
         canvas = drawingCanvas;
     }
@@ -83,13 +84,21 @@ public class BoxBall
         erase();
             
         // compute new position
-        yPosition += ySpeed;
-        xPosition +=2;
+        yPosition = yPosition + ySpeed;
+        xPosition = xPosition + xSpeed;
 
-        // check if it has hit the ground
-        if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
-            yPosition = (int)(groundPosition - diameter);
-            ySpeed = -ySpeed + ballDegradation; 
+        if(yPosition == wallDown - diameter) {
+            ySpeed = -1; 
+        }
+        else if (yPosition == wallUp) {
+            ySpeed = 1;
+        }
+        
+        if(xPosition == wallLeft) {
+            xSpeed = 1;
+        }
+        else if (xPosition == wallRight - diameter) {
+            xSpeed = -1;
         }
 
         // draw again at new position
