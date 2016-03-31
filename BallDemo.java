@@ -60,4 +60,14 @@ public class BallDemo
             }
         }
     }
+    
+    /**
+     * Método para dibujar un triangulo
+     */
+    public void boxBall() {
+        myCanvas.drawLine(50,50,450,50);
+        myCanvas.drawLine(50,50,50,400);
+        myCanvas.drawLine(450,50,450,400);
+        myCanvas.drawLine(50,400,450,400);
+    }
 }
