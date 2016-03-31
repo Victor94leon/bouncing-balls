@@ -64,10 +64,41 @@ public class BallDemo
     /**
      * Método para dibujar un triangulo
      */
-    public void boxBall() {
+    public void boxBall(int numeroDeBolas) {
         myCanvas.drawLine(50,50,450,50);
         myCanvas.drawLine(50,50,50,400);
         myCanvas.drawLine(450,50,450,400);
         myCanvas.drawLine(50,400,450,400);
+        int ground = 400;
+        
+        Random random = new Random();
+        ArrayList<BoxBall> bolas = new ArrayList<>();
+        myCanvas.setVisible(true);
+        
+        for (int index = 0; index<numeroDeBolas; index++) {
+            // Se crean tres variables locales, una para cada color primario, 
+            // eligiendo un número aleatorio desde el 0 al 254
+            int rojo = random.nextInt(255);
+            int verde = random.nextInt(255);
+            int azul = random.nextInt(255);
+            // Se crea un color nuevo con las variables de los colores e insrtarlo más tarde
+            // ala hora de construir un objeto de la clase BouncingBall
+            Color color = new Color(rojo,verde,azul);
+            // crate and show the balls
+            BoxBall ball = new BoxBall(random.nextInt(200), random.nextInt(150),random.nextInt(100), color, ground, myCanvas);
+            ball.draw(); 
+            bolas.add(ball);
+        }
+        // make them bounce
+        boolean finished =  false;
+        while(!finished) {
+            myCanvas.wait(50);           // small delay
+            for (BoxBall bolaEnLista : bolas) {
+                bolaEnLista.move();
+                if (bolaEnLista.getXPosition()>=550) {
+                    finished = true;
+                }
+            }
+        }
     }
 }
